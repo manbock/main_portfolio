@@ -1,0 +1,952 @@
+@charset "UTF-8";
+@import url(reset.css);
+@import url('https://cdn.jsdelivr.net/npm/galmuri/dist/galmuri.css');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@700;800;900&display=swap');
+@font-face {
+   font-family: 'NeoDunggeunmo';
+   src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.3/NeoDunggeunmo.woff') format('woff');
+   font-weight: normal;
+   font-style: normal;
+}
+/* font-family: 'Barlow', sans-serif; */
+/* font-family: "Neo둥근모", "neodgm"; */
+.hidden {/* height:100%; min-height:100%; */ overflow:hidden !important; touch-action:none;}
+
+.loading_page{position: absolute;top: 0; left: 0; width: 100%; height: 100%;
+   background-color: #000; z-index: 999;
+}
+.spline{width: 100vw; height: 100vh; position: fixed; top: 0; left: 0;
+   display: block;  z-index: 1000;  /* display: none; */
+}
+.spline_txt{animation: mission_ani 3s infinite;}
+
+spline-viewer{width: 100%; height: 100%;}
+
+.game_screen{width: 100vw; height: 100vh; max-width: 1536px;
+   margin: 0 auto;
+}
+.grid{display: grid;}
+
+body{ /* font-family: Galmuri7, sans-serif; */overflow-X: hidden;font-family: "Neo둥근모", "neodgm";}
+/* --------------------------🎃GAME BOY----------------------- */
+
+.spline p{
+   font-size: 4rem; color: #fff; position: absolute;
+   display: block; font-weight: bold;
+   left: 50%; bottom: 10%; transform: translateX(-50%); z-index: 100;
+}
+
+/* --------------------------🎃SCREEN CHANGE----------------------- */
+ul.screen_change{ height: 100vh;
+   display: grid;
+   grid-template-columns: repeat(20, 1fr);
+   position: fixed;  top: 0; left: 0;
+   z-index: 999;
+   pointer-events: none;
+}
+.screen_change li{
+   width: 5vw; height: 10vh;
+   background-color: #000;
+   list-style: none;
+   transform: scale(0);
+   transform-origin: center;
+}
+
+
+
+/* ---------------------------🎃section1--------------------------- */
+
+.section1{ background-color: #000; font-family: Galmuri7, sans-serif; }
+
+.scene1{ background-color: #000;}
+
+.scene1 .contents{position: absolute;  width: 100%; height: 100vh; 
+   display: flex; flex-direction: column; justify-content: center; align-items: center; gap:8rem;
+   left: 50%; transform: translateX(-50%);
+   overflow: hidden;
+}
+
+.scene1 .metal_logo{width: 40vw; height: 50vh;
+   background: 50% 50%/100% url(../img/metalslug_logo.png) no-repeat;
+}
+.scene1 p{
+   font-size: 3rem; color: #fff; font-weight: bold;
+}
+.scene1 .metal_gif{width: 100%; height: 100%;}
+
+
+
+/* -----------------------------sec1 scene2------------------------ */
+.section1 .scene2{width: 100%; height: 100vh; background: 50% 50%/100% 100% url(../img/select_bg.png); display: flex; flex-direction: column;
+   justify-content: center; align-items: center;
+}
+.section1 .scene2 .select_tit{
+   width: 80%; height: 15%;
+   background:50% 50%/100% 100% url(../img/select_tit.png);}
+.section1 .scene2 .container{grid-template-columns: repeat(4, 1fr);
+   grid-template-rows: 0.8fr 3fr 1fr;
+   width: 100%;
+   height: 90%;
+   padding: 0 4rem;
+}
+.p1{
+   width: 90%; margin: 0 auto;
+   background:50% 50%/100% 100% url(../img/p2.png);
+   display: flex;justify-content: center; align-items: center;
+}
+.p1 p{ width: 40%; height: 0; transition: 0.2s;
+   background:0% 0% / 100% 100%  url(../img/p1font.gif);
+}
+.p1 p.active{height: 60%;}
+.player{background-color: #000; border-radius: 2rem;}
+.player_box{
+   width: 100%; height: 100%; position: relative;
+   overflow: hidden;
+   background:50% 50%/100% 100% url(../img/playerBox.png);
+   border-radius: 2rem;
+}
+.box_border{
+   width: 100%; height: 100%; position: absolute; z-index: 11;
+   background:50% 50%/100% 100% url(../img/playerBox.png)
+}
+.player_inner{
+   width: 98%; height: 100%; position: absolute; z-index: 10;
+   transition: 0.2s;
+}
+
+.player_inner1{
+   background: 50% 50%/100% 95% no-repeat url(../img/mypic1_black.png); right: 0;
+}
+.player_box:hover .player_inner1{
+   background: 50% 50%/100% 95% no-repeat url(../img/mypic1.jpg); right: 0;
+}
+.player_inner2{
+   background: 50% 50%/100% 95% no-repeat url(../img/mypic2_black.png); right: 0;
+}
+.player_box:hover .player_inner2{
+   background: 50% 50%/100% 95% no-repeat url(../img/mypic2.jpg); right: 0;
+}
+.player_inner3{
+   background: 50% 50%/100% 95% no-repeat url(../img/mypic3_black.png); right: 0;
+}
+.player_box:hover .player_inner3{
+   background: 50% 50%/100% 95% no-repeat url(../img/mypic3.png); right: 0;
+}
+.player_inner4{
+   background: 50% 50%/100% 95% no-repeat url(../img/mypic4_black.png); right: 0;
+}
+.player_box:hover .player_inner4{
+   background: 50% 50%/100% 95% no-repeat url(../img/mypic4.jpg); right: 0;
+}
+
+.player_inner.active{
+   background-image: url(../img/mypixel2.png);
+}
+
+
+
+
+
+
+
+
+
+.select_door{background:50% 50%/100% 100% url(../img/select_door.png);
+   width: 100%; height: 100%; position: absolute; top: 0; left: 0;
+ z-index: 12;
+}
+.door_img{width: 45%; height: 30%; position:absolute; bottom: 28%; left: 30%;
+   display: none;
+}
+
+
+
+.player_name{background:50% 50%/90% 70% url(../img/player_name.png) no-repeat;}
+
+/* -----------------------------sec1 scene3------------------------ */
+.section1 .scene3{width: 100%;  background-color: #000; position: relative; overflow: hidden;}
+
+.scene3 .container{width: 100vw; height: 100vh; max-width: 1536px;
+   overflow: hidden; position: relative;
+}
+
+.scene3_header{
+   position: absolute; z-index: 1;
+   width: 100%; height: 15%; 
+   display: flex; justify-content: center; align-items: center;
+}
+.scene3_header .score{width: 20%; height: 100%;
+   background: 50% 70% /100% 90% no-repeat url(../img/sec1score.png);
+}
+.scene3_header .ammo{width: 20%; height: 100%;}
+.scene3_header .time{width: 10%;
+      font-family: 'Barlow', sans-serif;
+      font-size: 8rem;  font-weight: 800;
+      line-height: 100%;
+      background: linear-gradient(to top, #e36200, #fcff3e);
+      color: transparent; background-clip: text;
+      -webkit-text-stroke: 4.5px rgb(32, 31, 30);
+}
+.scene3_header .coin{width: 40%; height: 100%;
+   background: 50% 50% /70% no-repeat url(../img/sec1coin.png);
+}
+.scene3_header .coin.blink{ opacity: 0;}
+
+
+
+
+
+.scene3 .scene3_bg{
+   width: 400%; height: 100%; background: 0% 0%/100% 100%  url(../img/scene3_bg.png);
+}
+
+.scene3 .contents{display: flex; width: 100%; height: 100%;}
+.introduce{width: 100%; display: flex; justify-content: center;
+   align-items: center;
+   position: relative;}
+.character{
+   position: absolute;
+   bottom: 5rem; left: 0;
+}
+.introduce .marco{ 
+   width: 20rem; height: 20rem;
+   background: 50% 50% /100% no-repeat url(../img/marco_default.gif);} 
+.introduce .tarma{ 
+   width: 20rem; height: 20rem;
+   background: 50% 50% /100% no-repeat url(../img/tarma_talking.gif);} 
+.introduce .eri{ 
+   width: 20rem; height: 20rem;
+   background: 50% 50% /60% no-repeat url(../img/eri_default.gif);} 
+.introduce img{width: 25%; height: 55%; margin-top: 5%; margin-left: 5%;}
+
+/* 대화창 */
+.introduce .metal_txt_box{width: 0; height: 0;background-color: tomato;
+   overflow: hidden; position: relative;
+   transition: 0.5s; background: 0% 0% / 100% 100% url(../img/metal_chatbox.png); display: flex; opacity: 0;
+}
+
+.introduce .metal_txt_box.active{
+   width: 60%; height: 60%; opacity: 1;
+}
+.metal_name{font-size: 3rem; position: absolute; top: 8%; left: 35%;}
+
+
+.metal_cont_wrap{width: 60%; height: 60%; display: flex; position: relative;
+   left: 5%; top: 20%; overflow: hidden;
+}
+.metal_cont_inner{
+   width: 100%;   height: 100%; display: flex;
+}
+.metal_cont{width: 100%; height: 100%; flex-shrink: 0;
+   font-size: 2rem; line-height: 4rem;
+}
+
+.metal_cont.cont4.last{position: relative;}
+.metal_txt_box>button{position: absolute; width: 16%; height: 12%;
+   font-family: Galmuri7, sans-serif; font-size: 2rem;
+   cursor: pointer;
+} 
+button.prev_btn{
+   left: 10%; bottom: 17%; 
+}
+button.next_btn{
+   font-family: Galmuri7, sans-serif;
+   right: 10%;bottom: 17%;
+}
+button.end_btn{
+   position: absolute  ;
+   right: 5%; bottom: 0%; width: 25%; height: 20%;
+   background-color: peru; z-index: 10; display: none;
+   font-family: Galmuri7, sans-serif; font-size: 2rem;
+}
+
+/* 대화창 END */
+
+
+.my_character{
+   position: absolute;
+   width: 13rem; height: 13rem;
+   bottom: 5rem; left: 5rem;
+}
+
+.mission{
+   width: 100%; height: 100%; 
+   position: absolute;
+   display: flex; flex-direction: column;
+   align-items: center; gap: 5rem; 
+   padding-top: 10%;
+   pointer-events: none;
+   transition: none;
+   opacity: 0;
+}
+.mission.blink{
+   animation: mission_ani 3s
+}
+@keyframes mission_ani {
+   0%{opacity: 1;}
+   20%{opacity: 0;}
+   40%{opacity: 1;}
+   60%{opacity: 0;}
+   80%{opacity: 1;}
+   100%{opacity: 0;}
+}
+.mission_start .title1{
+   width: 710px; height: 100px;
+   display: flex;
+}
+.mission_start .title2{
+   width: 610px; height: 100px;
+   display: flex;
+}
+.mission_end .title1{
+   width: 700px; height: 100px;
+   display: flex;
+}
+.mission_end .title2{
+   width: 900px; height: 100px;
+   display: flex;
+}
+.titles .fonts{width: 100px; height: 100px; position: relative;}
+.titles .a{background: 50% 50% /contain no-repeat url(../img/font_A.png);
+margin-right: 10px;
+}
+.titles .r{background: 50% 50% /contain no-repeat url(../img/font_R.png);}
+.titles .s{background: 50% 50% /contain no-repeat url(../img/font_S.png);
+margin-right: 10px;}
+.titles .e{background: 50% 50% /contain no-repeat url(../img/font_E.png);}
+.titles .c{background: 50% 50% /contain no-repeat url(../img/font_C.png);}
+.titles .t{background: 50% 50% /contain no-repeat url(../img/font_T.png);}
+.titles .i{background: 50% 50% /contain no-repeat url(../img/font_I.png);
+margin:0 -5px ;}
+.titles .o{background: 50% 50% /contain no-repeat url(../img/font_O.png);}
+.titles .n{background: 50% 50% /contain no-repeat url(../img/font_N.png);}
+.titles .m{background: 50% 50% /contain no-repeat url(../img/font_M.png);}
+.titles .p{background: 50% 50% /contain no-repeat url(../img/font_P.png);}
+.titles .l{background: 50% 50% /contain no-repeat url(../img/font_L.png);}
+.titles .emo{background: 50% 50% /contain no-repeat url(../img/font__emo.png);}
+
+
+.mission_end .mission_title2{
+   width: 800px; height: 100px;
+}
+
+
+
+
+/* -------------------------------------section2--------------------------------- */
+.section2{width: 100%; background-color: #000; overflow: hidden;}
+.space{width: 100px;}
+.section2 .scene1{
+   display: flex; justify-content: center; overflow: hidden;
+}
+.section2 .scene1 .contents{position: absolute;  width: 100%; height: 100vh; 
+   display: flex; flex-direction: column; justify-content: center; align-items: center; gap:8rem;
+   left: 50%; transform: translateX(-50%);
+   overflow: hidden; z-index: 1;
+}
+
+.scene1 .doom_logo{width: 40vw; height: 50vh;
+   background: 50% 50%/100% url(../img/Doom_logo.png) no-repeat;
+}
+.scene1 p{
+   
+   font-size: 3rem; color: #fff;
+}
+.scene1 .doom_bg{width: 100%; height: 100%; transform: scale(1.2);}
+
+
+
+
+
+
+
+
+/* -------------🎃doom_scene2-------------- */
+.section2 .scene2{width: 100%;  position: relative;}
+
+.black_screen{display: flex; z-index: 100; width: 100% ; height: 100%; position: absolute; top: 0; left: 0;  pointer-events: none;}
+
+.black_screen .black{background-color: #000; width: 100%; height: 100%;}
+
+.scene2 .game_screen{
+   width: 100%; height: 100%;  flex-shrink: 0; 
+}
+
+.second-page{width: 100%; 
+   background-color: #000;  overflow: hidden;
+} 
+
+.doom_ui{width: 100%; height: 17%; position: absolute; bottom: 0; 
+   max-width: 1536px; left: 50%; transform: translateX(-50%);
+   background: 0% 100% / 100% no-repeat url(../img/doom_ui.png); z-index: 9;}
+.doom_ui .doom_hearts{
+   position: absolute; width: 13%; height: 40%; bottom: 39%; left: 17%;
+   display: flex; justify-content: space-between; align-items: center;
+}
+.doom_ui .doom_hearts .heart{width: 30%; height: 100%; background: center/100% 100% url(../img/heart.png);}
+.doom_ui .doom_face{
+   position: absolute; width: 8%; height: 85%;
+   bottom: 0; left: 50%; transform: translateX(-50%);
+   background: 0% 0%/ 100% 100% no-repeat url(../img/doom_face2.png);
+}
+.doom_ui .doom_armor{
+   position: absolute; width: 11%; height: 53%; bottom: 37%; left: 59%;
+   background: 0% 0% / 100% 100% url(../img/doom_armor.png);
+}
+
+.doom_gun{
+   position: absolute; left: 50%; transform: translateX(-50%) scale(3);
+   bottom: 20%;  z-index: 8; cursor: none;
+}
+.world{
+   position: relative;
+   width: 100%; height: 100vh;
+   perspective: 500px;
+}
+.world .stage{
+   position: absolute;
+   left: 0  ; top: 0;
+   width: 100vw; height: 100vh;
+   transform-style:preserve-3d;
+   cursor: none;
+   
+}
+.world .stage .house{
+   width: 100%; height: 100vh;
+   transform-style:preserve-3d;
+   transform: translateZ(-790vw); 
+}
+
+.world .stage .house .wall{
+   position: absolute;
+      width: 100vw;height: 100vh;
+   background-color: rgba(255, 255, 255, 0.7);
+}
+.world .stage .house .wall-left{
+   width: 800vw;
+   background-color: #000;
+   transform: rotateY(90deg) translateZ(-400vw) translateX(-400vw); 
+   background: 0% 0% /contain url(../img/STARTAN3.png);
+}
+.world .stage .house .wall-right{
+   width: 800vw;
+   background-color: #f8f8f8;
+   transform: rotateX(0deg) rotateY(90deg)  translateZ(-300vw) translateX(-400vw); 
+   background: 0% 0% /contain url(../img/STARTAN3.png);
+}
+.world .stage .house .wall-bottom{
+   width: 100vw; height: 800vw;  
+   background-color: tomato;
+   transform: rotateX(90deg)rotateY(0deg) translateZ(calc(400vw - 100vh))
+   translateY(400vw);
+   background: 0% 0% / 20% url(../img/doom_floor.png);
+}
+
+.world .stage .house .wall-top{
+   width: 100vw; height: 800vw;
+   background-color: tomato;
+   transform: rotateX(90deg)rotateY(0deg) translateZ(400vw) translateY(400vw);
+   background: 0% 0% / 20% url(../img/doom_Ceiling.png);
+}
+.world .stage .house .big-door1{
+   width: 50vw; height: 100vh;
+   background: 0% 0% /100% 100% url(../img/doom_bigdoor1.png);
+}
+.world .stage .house .big-door2{
+   width: 50vw; height: 100vh;
+   transform: translateX(50vw);
+   background: 0% 0% /100% 100% url(../img/doom_bigdoor2.png);
+}
+.world .stage .house .boss_bg{
+   width: 1000vw; height: 1000vh;
+   transform: translateZ(-200vw) translateX(-500vw) translateY(-500vh);
+   background: 0% 0% /100% 100% url(../img/boss_bg.jpg);
+
+}
+.world .stage .house .boss{
+   display: block;
+   transform-origin: center;
+   width: 50vw; height: 50vw;
+   transform: translateZ(-100vw) ;
+  background: 0% 0% / 100% 100% url(../img/boss.gif);
+  animation: boss_move 8s infinite alternate;
+  transition: 1s;
+}
+@keyframes boss_move {
+   0%{transform: translate3d(-10vw,-70vw,-100vw) ;}
+   20%{transform: translate3d(50vw,50vw,-80vw) ;}
+   40%{transform: translate3d(150vw,-40vw,-120vw) ;}
+   60%{transform: translate3d(-30vw,-40vw,-100vw) ;}
+   80%{transform: translate3d(0vw,40vw,-100vw);}
+   100%{transform: translate3d(100vw,-20vw,-60vw) ;}
+}
+.world .stage .house .boss.die{
+   background: 0% 0% /cover url(../img/boss_die.gif);
+   animation: none; 
+   transform: translateZ(-50vw) translateX(23vw);
+}
+
+
+.aim{width: 60px; height: 60px; background:50% 50% / cover url(../img/aim.png);
+   position: absolute; z-index: 7; top: 0; left: 0;
+   pointer-events: none; 
+}
+
+ /* 구조물 배치 */
+
+.door_wrap{ position: absolute; width: 400px; height: 85%; bottom: 0; left: 0;
+   transform-origin: left;
+}
+.door_wrap .door{
+   width: 100%; height: 100%; background:0% 0% /100% url(../img/doom_door1.png);
+}
+.door_wrap .dark{width: 100%; height: 100%; background-color: #000;}
+.door1{transform: rotateY(90deg) translateZ(0vw) translateX(-600vw);}
+.door2{transform: rotateY(90deg) translateZ(0vw) translateX(-500vw);}
+.door3{transform: rotateY(90deg) translateZ(0vw) translateX(-300vw);}
+.door4{transform: rotateY(90deg) translateZ(0vw) translateX(-200vw);}
+.door5{transform: rotateY(90deg) translateZ(100vw) translateX(-600vw);}
+.door6{transform: rotateY(90deg) translateZ(100vw) translateX(-500vw);}
+.door7{transform: rotateY(90deg) translateZ(100vw) translateX(-300vw);}
+.door8{transform: rotateY(90deg) translateZ(100vw) translateX(-200vw);}
+
+
+.monster{display: block; width: 400px; height: 80%;  bottom: 0; 
+   position: absolute; 
+   
+}
+
+.monster1{transform:  translateZ(590vw) translate(-100vw,0);}
+.monster2{transform:  translateZ(490vw) translate(100vw,0); right: 0;}
+.monster3{transform:  translateZ(190vw) translate(-100vw,0);}
+.monster4{transform:  translateZ(190vw) translate(100vw,0); right: 0;}
+
+.monster1.active{
+   animation: monster_ani1 10s linear;
+}
+.monster2.active{
+   animation: monster_ani2 10s linear;
+}
+.monster3.active{
+   animation: monster_ani3 10s linear;
+}
+.monster4.active{
+   animation: monster_ani4 10s linear;
+}
+@keyframes monster_ani1 {
+   0%{transform:translateZ(590vw) translate(-100vw,0);}
+   5%{transform:translateZ(590vw) translate(0,0);}
+   20%{transform:translateZ(620vw) translate(40vw,0);}
+   100%{transform:translateZ(800vw) translate(40vw,0);}
+}
+@keyframes monster_ani2 {
+   0%{transform:translateZ(490vw) translate(100vw,0);}
+   5%{transform:translateZ(490vw) translate(0,0);}
+   20%{transform:translateZ(520vw) translate(-40vw,0);}
+   100%{transform:translateZ(700vw) translate(-40vw,0);}
+}
+@keyframes monster_ani3 {
+   0%{transform:translateZ(190vw) translate(-100vw,0);}
+   5%{transform:translateZ(190vw) translate(0,0);}
+   20%{transform:translateZ(220vw) translate(20vw,0);}
+   100%{transform:translateZ(400vw) translate(20vw,0);}
+}
+@keyframes monster_ani4 {
+   0%{transform:translateZ(190vw) translate(100vw,0);}
+   5%{transform:translateZ(190vw) translate(0,0);}
+   20%{transform:translateZ(220vw) translate(-20vw,0);}
+   100%{transform:translateZ(400vw) translate(-20vw,0);}
+}
+
+   .doom_cont{width: 75vw; height: 90vh;
+   background:0% 0% /100% 100%  no-repeat url(../img/doom_chat.png);
+   position: fixed; z-index: 10; left: 50%; top: 50%; transform: translate(-50%, -50%); padding: 3rem; display: flex; flex-direction: column; gap: 3rem;
+   visibility: hidden; 
+}
+.doom_cont .close_btn{width: 200px; height: 100px; 
+   position: absolute; top: 4rem; right: 4rem; font-size: 3rem; color: #fff;
+}
+
+.doom_cont .cont_upper{display: flex; height: 35%; width: 80%; gap: 5rem;}
+.cont_upper .sin_img{height: 100%; width: 25%; background:0% 0% / 100% 100% url(../img/sin.png);}
+.cont_upper .sin_txt{width: 70%; height: 100%; font-size: 2rem; color: #fff; 
+   display: flex; align-items: center;
+}
+
+.doom_cont .cont_lower{width: 100%; height: 70%; display: flex; justify-content: space-around  ; align-items: center;}
+.cont_lower .port{width: 30%; height: 100%; background-color: #ffe0b0;}
+.cont_lower .port p{margin-top: 15%; padding: 0; font-size: 1.3rem; display: flex; justify-content: center;}
+
+.cont_lower .renewal{width: 50%; height: 100%;  overflow-y: scroll;
+   border-radius: 1.5rem;
+}
+.cont_lower .renewal::-webkit-scrollbar{width: 10px; background-color: #282828;
+   border-radius: 5px;
+}
+.cont_lower .renewal::-webkit-scrollbar-thumb{background-color: #d1d1d1; border-radius: 5px;}
+
+.cont_lower .renewal_img1{ width: 100%; height: 480%; background:0% 0% / 100% 100% url(../img/renewal.png);  display: block;}
+
+.cont_lower .renewal_txt{font-size: 2.5rem; color: #fff; width: 40%; height: 100%; display: flex; flex-direction: column; justify-content: center; gap: 1rem;}
+.renewal_txt h2{font-size: 3rem; margin-bottom: 1rem;}
+.renewal_txt p{font-size: 1.5rem;}
+.renewal_txt .bar{width: 100%; height: 1px; background-color: #fff;}
+.monster_desc{display: flex;}
+.monster_desc_left{width: 50%; color: #fff; display: flex; flex-direction: column;  gap: 1rem;}
+.monster_desc_right{width: 50%; color: #fff; display: flex; flex-direction: column;  gap: 1rem;}
+
+
+
+.port.doom1 a{background: 0% 0% / 100% 100% url(../img/magma.png);}
+.port.doom2 a{background: 0% 0% / 100% 100% url(../img/sushi.png);}
+.port.doom3 a{background: 0% 0% / 100% 100% url(../img/musign.png);}
+.port h3{margin-top: 1rem;}
+.close_btn{font-family: "Neo둥근모", "neodgm";}
+/* --------------section2 scene3------------ */
+
+.section2 .scene3{height: 100vw; height: 100vh; 
+   background: center/100% 100% no-repeat url(../img/doom_end_bg.png);
+   display: flex; flex-direction: column;
+   justify-content: space-around; align-items: center;
+}
+
+.doom_list_tit{width: 40%; height: 15%;
+   background:center/contain no-repeat  url(../img/doom_FINISHED.png);
+}
+.list_wrapper{
+   width: 100%; height: 70%; display: flex; justify-content: space-evenly;}
+
+.doom_list{
+   width: 40%; height: 100%;
+   display: flex; flex-direction: column;
+   justify-content: space-between;
+}
+
+.doom_list .list{width: 50%; height: 20%; transition: 0.2s;}
+.doom_list .list:hover{transform: scale(1.2);}
+
+.list.favorite{
+   width: 60%;
+   background:center/contain no-repeat  url(../img/favorite.png)}
+.list.special{background:center/contain no-repeat  url(../img/special.png)}
+.list.hobby{background:center/contain no-repeat  url(../img/hobby.png)}
+.list.mbti{
+   width: 35%;
+   background:center/contain no-repeat  url(../img/MBTI.png)}
+
+.list_desc{
+   width: 40%; height: 100%;
+   display: flex; flex-direction: column; align-items: center;
+   justify-content: center; background:center /100% 100% url( ../img/doom_listbox.png); border-radius: 6rem; border: 4px solid black;
+}
+.list_item_wrapper{
+   width: 85%; height: 90%;
+   overflow-y: clip;
+}
+.item_slider{width: 100%; height: 400%; transition: 0.3s;}
+.list_item{width: 100%; height: 25%; display: flex; flex-direction: column;
+   justify-content: space-around;
+   text-shadow: 5px 5px 0px #000;
+}
+
+.list_img{width: 100%; height: 80%; border-radius: 2rem; box-shadow: 5px 7px 1px #1f0d02;}
+.item1 .list_img{background: 100% 100%/cover url(http://image.gamechosun.co.kr/wlwl_upload/dataroom/df/2020/03/04/957744_1583313027.jpg);}
+.item2 .list_img{background:center/cover url(../img/manbock.jpg);}
+.item3 .list_img{background: center/ 100% 100% url(https://img.freepik.com/free-vector/open-air-cinema-concept_23-2148653644.jpg);}
+.item4 .list_img{height: 50%; background:center/100% 100% url(https://testmoa.com/wp-content/uploads/2023/05/ENTP-%EC%97%B0%EC%98%88%EC%9D%B8.jpg);}
+
+.list_txt{font-size: 3rem;  color: #fff;
+   width: 100%; height: 20%; display: flex; align-items: center;
+}
+
+.end_doom{
+   width: 20%; height: 10%;
+   background:center/contain no-repeat  url(../img/end_game.png);
+   transition: 0.2s;
+}
+.end_doom:hover{transform: scale(1.2);}
+
+
+
+
+/* ----------------------------section3---------------------------- */
+
+.section3{background-color: #000;}
+.section3 .scene1{
+   width: 100%; height: 100vh;
+   background: 0% 0% / cover  url(../img/mario_mainbg.png);
+   display: flex; flex-direction: column; align-items: center;
+}
+
+.mario_logo_wrap{width: 65%; height: 45%;
+   display: flex; flex-direction: column;
+   align-items: end; margin: 5% 0;
+}
+.mario_logo{
+   width: 100%; height: 90%;
+   background:0% 0%/100% 100%  url(../img/mario_logo.png);
+}
+.develope_date{width: 50%; height: 10%;
+   background:0% 0%/100% 100%  url(../img/2024minsoo.png);
+}
+.player1{width: 35%; height: 4%;
+   background:0% 0%/100% 100%  url(../img/1player.png);
+   margin-bottom: 5%; transition: 0.1s;
+}
+.player2{width: 35%; height: 4%;
+   background:0% 0%/100% 100%  url(../img/2player.png);
+   transition: 0.1s;
+}
+.m_player:hover{
+   transform: scale(1.2);
+}
+
+
+.section3 .scene2{width: 100%;  background-color: #000; position: relative; overflow: hidden;}
+
+.section3 .container{width: 100vw; height: 100vh;
+   overflow: hidden; position: relative;}
+.section3 .scene2_bg{
+   width: 1000%; height: 100%; background: 0% 0%/100% 100%  url(../img/mario_bg.png);
+}
+.section3 .scene2 .contents{display: flex; width: 100%; height: 100%;}
+.section3 .introduce{width: 100vw; height: 100vh;}
+.mario_character{
+   position: absolute;
+   width: 5vw; height: 12vh;
+   bottom: 13vh; left: 35vw;
+}
+
+.mario_sites{width: 60vw; height: 50vh; background-color: rgb(240, 190, 129);
+   position: absolute; top: 16vh; left: 10vw;
+   border-radius: 2rem;
+   display: flex; justify-content: center; align-items: center;
+}
+.works_title{position: absolute; width: 37%; height: 30%; ; z-index: 1;
+   top: -30%; left: 50%; transform: translateX(-50%); background: 0% 0% / 100% 100% url(../img/works.png);
+}
+.turtle{position: absolute; width: 9%; height: 20%; ; z-index: 1;}
+
+.green_turtle{background:0% 0% /100% 100% url(../img/greenwing.gif);
+   left: 5%; top: -20%;
+}
+.red_turtle{background:0% 0% /100% 100% url(../img/redwing.gif);
+   right: 5%; top: -20%;
+}
+.port_wrap{width: 98%; height: 95%; overflow: hidden; border-radius: 2rem; }
+.port_desc{
+   position: relative;display: flex;width: 600%; gap: 30px; height: 100%;
+}
+.port{
+   width: 450px;
+   background-color: #dbdbdb;
+   padding: 20px;
+   border-radius: 1rem;
+   box-shadow:  rgba(0, 0, 0, 0.4) 0px -7px 1px inset;
+}
+.port span{
+   opacity: 0.5;
+   padding-bottom: 10px;
+   display: inline-block;
+}
+
+.port .img{
+   width: 100%; height: 55%;
+   border-radius: 10px;
+   display: block;
+   background-size: cover;
+   background-position: center center;
+
+}
+.port1 .img{
+   background:0% 0% /100% 100% url(../img/port1.png);
+}
+.port2 .img{
+   background:0% 0% /100% 100% url(../img/port2.png);
+}
+.port3 .img{
+   background:0% 0% /100% 100% url(../img/port3.png);
+}
+.port4 .img{
+   background:0% 0% /100% 100% url(../img/port4.png);
+}
+.port5 .img{
+   background:0% 0% /100% 100% url(../img/port5.png);
+}
+.port6 .img{
+   background:0% 0% /100% 100% url(../img/port6.png);
+}
+.port7 .img{
+   background:0% 0% /100% 100% url(../img/port7.png);
+}
+.port8 .img{
+   background:0% 0% /100% 100% url(../img/port8.png);
+}
+.port9 .img{
+   background:0% 0% /100% 100% url(../img/port9.png);
+}
+.port10 .img{
+   background:0% 0% /100% 100% url(../img/musign.png);
+}
+.port11 .img{
+   background:0% 0% /100% 100% url(../img/magma.png);
+}
+.port12 .img{
+   background:0% 0% /100% 100% url(../img/port12.png);
+}
+.port h3{
+   font-size: 1.7rem;
+   text-align: center;
+   font-weight: 900;
+   color: #242424;
+   border-bottom: 1px solid #5f5953;
+   padding-bottom: 10px;
+}
+.port p{
+   padding-top: 1rem;
+   color: #292929;
+}
+
+/* 🎶 디자인스킬창 */
+.skill_title.design{position: absolute; width: 33%;
+   height: 15%; 
+   top: 5%;  line-height: 100%;
+   font-size: 5rem; color: #fff;
+   background:0% 0%/ contain no-repeat url(../img/design_skills.png);
+}
+
+.introduce.design{display: flex; justify-content: center;}
+.design_skill{
+   width: 60%; height: 73%; position: relative; top: 0;
+   display: flex; justify-content: space-between;
+}
+.pipe_wrap{width: 20%; height: 100%; position: relative; overflow: hidden;}
+.pipe{position: absolute; bottom: 0; width: 100%; height: 20%;
+   background: 0% 0% / 100% 100% url(../img/pipe.png);
+}
+.flower{width: 100%; height: 80%; position: absolute; bottom: 0;
+   background: center / 60% 100% no-repeat url(../img/flower.gif);
+}
+.flower1{transform: translateY(5%);}
+.flower2{transform: translateY(35%);}
+.flower3{transform: translateY(-12%);}
+.flower4{transform: translateY(15%);}
+.skill_name{position: absolute; width: 15%; height: 17%;
+    bottom: 0; background: 0% 0% / 100% 100% url(../img/skill_name.png);
+   display: flex; justify-content: center;
+}
+.skill_name.skill1{left: -2%;}
+.skill_name.skill2{left: 25%;}
+.skill_name.skill3{left: 52%;}
+.skill_name.skill4{left: 78%;}
+.skill_name img{width: 9rem; height: 4.5rem;}
+img.photoshop,img.spline_icon{width: 3.5rem; height: 3.5rem; margin-top: 0.5rem;}
+
+/* 🎶 웹스킬창 */
+.skill_title.web{position: absolute; width: 30%;
+   height: 15%; 
+   top: 5%; text-align: center; line-height: 100%;
+   font-size: 5rem; color: #fff;
+   background:0% 0% /contain no-repeat url(../img/web_skills.png);
+}
+.web_skill{
+   width: 70%; height: 70%; position: relative; top: 1rem;
+   display: flex; justify-content: space-between;
+}
+.flag_wrap{width: 31%; height: 100%; position: relative; display: flex;
+   justify-content: center; overflow: hidden;
+}
+.pole{position: relative; bottom: 0; width: 30%; height: 100%;
+   background: 0% 0% / 100% 100% url(../img/pole.png);
+}
+.flag{
+   position: absolute; top: 5%; width: 49%; height: 15%;
+   background: 0% 0% / 100% 100% url(../img/flag.png);
+   right: 53%; display: flex; justify-content: center;
+   align-items: center;
+}
+.flag.flag1{transform: translateY(50%);}
+.flag.flag2{transform: translateY(0%);}
+.flag.flag3{transform: translateY(50%);}
+.flag.flag4{transform: translateY(250%);}
+
+
+
+
+
+.flag .web_icon{ width: 50%; height: 81%; margin-left: 10%;
+   margin-top: -4%;
+}
+
+.web_icon.html{background: 0% 0% / 100% 100% url(../img/html.png);}
+.web_icon.js{background: 0% 0% / 100% 100% url(../img/js.png);}
+.web_icon.css{background: 0% 0% / 100% 100% url(../img/css.png);}
+.web_icon.react{background: 0% 0% / 100% 100% url(../img/react.png);}
+
+
+
+
+/* 혼잣말 */
+.introduce .mario_txt_box{width: 60%; height: 60%;background-color: tomato;
+   overflow: hidden; position: relative;
+   transition: 0.5s; background: 0% 0% / 100% 100% url(../img/mario_chatbox.png); display: flex; margin-bottom: 10rem;
+}
+img.mario_pic{width: 25%; height: 52%; margin-top: 5%; margin-left: 5%;}
+
+
+.mario_cont_wrap{width: 60%; height: 80%; display: flex; position: relative;
+   left: 5%; top: 10%; overflow: hidden;
+}
+.mario_cont_inner{
+   width: 100%;   height: 100%; display: flex;
+}
+.mario_cont{width: 100%; height: 100%; flex-shrink: 0;
+   font-size: 2rem; line-height: 4rem; overflow: hidden;
+}
+.mario_txt_box>button{position: absolute; width: 16%; height: 12%;
+   font-family: Galmuri7, sans-serif; font-size: 2rem;
+   cursor: pointer;
+} 
+
+/* ----------------------contact---------------------- */
+.section3 .contents .contact_wrap{ width: 140vw;}
+.contact_tit{font-size: 6rem; font-weight: bold; color: #fa3523;
+   text-shadow: 5px 5px 1px #000;
+   position: absolute; top: 20%; left: 54%;  
+} 
+.contact{
+   position: absolute; bottom: 7.6rem; right: 4%;
+   width: 40%; height: 60%; 
+   background:0% 0%/100% 100% url(../img/contact.png);
+   font-size: 1.3rem; font-weight: bold;  color: #6d3404;
+}
+.contact_inner{display: flex; flex-direction: column;
+   width: 60%; height: 50%; position: absolute; top: 24%; left: 8%;
+   gap: 1.5rem;
+}
+input,select,textarea{outline: none; border: none;}
+
+
+.int{width: 100%; height: 100%; background-color: #bf6418;
+   border: 0.4rem solid #87430a;
+   border-bottom: none; border-right: none;
+}
+.total_wrap1{display: flex; width: 100%; height: 10%; justify-content: space-between; align-items: center;}
+.int_id{width: 100%; height: 100%;}
+.email_wrap{display: flex; width: 65%; height: 100%; justify-content: end;}
+.int_Subject{width: 100%;}
+.total_wrap2{display: flex; justify-content: space-between; height: 10%;}
+.subject_wrap{width: 65%; display: flex; justify-content: end;}
+
+
+.total_wrap3{display: flex; justify-content: space-between; flex-grow: 1;}
+.message_wrap{width: 65%;}
+.int_email{width: 100%; display: block;}
+.int_email textarea{width: 100%; height: 100%; font-size: 1rem;
+   background-color: #bf6418;
+   border: 0.4rem solid #87430a;
+   border-bottom: none; border-right: none;
+}
+
+
+#canvas{width: 50%; height: 80%; top: 0; left: 50%; position: absolute;  }
