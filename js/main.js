@@ -8,6 +8,7 @@ let section1=document.querySelector('.section1')
 let spline_txt=document.querySelector('.spline_txt')
 
 
+
 section1.addEventListener("click",()=>{
    spline.style.display="none"
 })
@@ -111,7 +112,7 @@ function gameChange(txt){
    gsap.to('.spline',{
       display:"block",
    });
-   spline_txt.innerText=`PRESS - ${txt} - KEY`
+   spline_txt.innerText=`키보드 - ${txt} - 키를 누르세요.`
    scrollDisable()
 }
 
@@ -131,7 +132,6 @@ let tl=gsap.timeline({
       pin:true
     }
 })
-
 tl.to(".metal_logo",{
    yPercent: -200,
  })
@@ -145,23 +145,23 @@ tl.to(".metal_gif",{
 metal_main.addEventListener('click',()=>{
    screenChange('.section1 .scene2',500)
 
-   let tl2=gsap.timeline({})
-   tl2.to(selectDoor[0],{
-      top:"-100%",
+   let tl2=gsap.timeline({
+      toggleActions: "restart reset restart reverse "
+   })
+   tl2.from(selectDoor[0],{
+      top:"0%",
       delay:3.5
    },)
-   tl2.to(selectDoor[1],{
-      top:"-100%",
+   tl2.from(selectDoor[1],{
+      top:"0%",
    },"-=0.3")
-   tl2.to(selectDoor[2],{
-      top:"-100%",
+   tl2.from(selectDoor[2],{
+      top:"0%",
    },"-=0.3")
-   tl2.to(selectDoor[3],{
-      top:"-100%",
+   tl2.from(selectDoor[3],{
+      top:"0%",
    },"-=0.3")
 })
-
-
 
 let playerBoxs=document.querySelectorAll('.player_box')
 let p1p=document.querySelectorAll('.p1 p')
@@ -190,9 +190,8 @@ playerBoxs.forEach((e, i)=>{
       }, 6000);
    })
 })
-// --------------------------------sec1 scene3-----------------------
-// 💥미션 컴플리트 애니메이션 넣기
 
+// --------------------------------sec1 scene3-----------------------
 
 let scene3_bg =document.querySelector('.scene3_bg')
 let metal_character=document.querySelector('.my_character')
@@ -367,10 +366,10 @@ let metal_tl=gsap.timeline({
       markers:true,
    }
  })
-   metal_tl.to(window,{
+ /*   metal_tl.to(window,{
     duration:1,
     scrollTo: {y:'.section2', offsetY: window.innerHeight},
-   },'sd')
+   },'sd') */
    metal_tl.to(window,{
       duration:1,
       scrollDisable
@@ -484,7 +483,7 @@ tl5.to(".doom_bg",{
 })
 
 doom_main.addEventListener('click',()=>{
-   screenChange('.section2 .scene2',0,true)
+   screenChange('.section2 .scene2',0,false)
 })
 
 
@@ -564,12 +563,18 @@ document.querySelector('.monster2').addEventListener('click',()=>{
    },1000)
 })
 
-// 닫기버튼
+//둠 튜토리얼 닫기버튼
+document.querySelector('.doom_tutorial .close_btn').addEventListener('click',()=>{
+   document.querySelector('.doom_tutorial').classList.add('closed');
+   scrollAble();
+})
+
+//둠 컨텐츠 닫기버튼
 close_btn.forEach((e,i)=>{
    e.addEventListener('click',()=>{
-      doom_cont[i].style.visibility="hidden"
-      scrollAble()
-      viewrotate()
+      doom_cont[i].style.visibility="hidden";
+      scrollAble();
+      viewrotate();
    })
 })
 
@@ -577,19 +582,19 @@ close_btn.forEach((e,i)=>{
 //몬스터 애니메이션 시점
 let  scene2 = document.querySelector('.section2 .scene2')
 window.addEventListener('scroll',()=>{
-   let scene2Top=scene2.offsetTop
-   let viewportTop=window.pageYOffset
-   let percent=(viewportTop - scene2Top)/(scene2.offsetHeight-window.innerHeight)*100
+   let scene2Top=scene2.offsetTop;
+   let viewportTop=window.pageYOffset;
+   let percent=(viewportTop - scene2Top)/(scene2.offsetHeight-window.innerHeight)*100;
 
    if(percent>=15 && percent<25){
-      monsters[0].classList.add('active')
+      monsters[0].classList.add('active');
    }
    if(percent>=25 && percent<63){
-      monsters[1].classList.add('active')
+      monsters[1].classList.add('active');
    }
    if(percent>=58 && percent<90){
-      monsters[2].classList.add('active')
-      monsters[3].classList.add('active')
+      monsters[2].classList.add('active');
+      monsters[3].classList.add('active');
    }
    if(percent>=95 && percent<100){
    /* gsap.to('.big-door1',{
