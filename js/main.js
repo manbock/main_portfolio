@@ -7,7 +7,48 @@ let loading=document.querySelector('.loading_page')
 let section1=document.querySelector('.section1')
 let spline_txt=document.querySelector('.spline_txt')
 
-
+function pageLoading(){
+   let container=document.querySelector('#progress');
+   let battery=document.querySelector('.battery')
+   let progressBar=document.querySelector('.progress-bar');
+   let progressText=document.querySelector('.progress-text');
+   var imgLoad = imagesLoaded('body');
+   let imgTotal=imgLoad.images.length;
+   
+   let imgLoaded=0;
+   let current=0;
+   let progressTimer;
+   let topValue;
+   
+   progressTimer=setInterval(updateProgress,1000/60)
+   imgLoad.on( 'progress', function(){ //이미지 로드되는 중간중간 할 일
+      imgLoaded++;
+   } );
+   
+   function updateProgress(){
+      let target=(imgLoaded/imgTotal)*100;
+      console.log(target);
+      current += (target - current)*0.1;
+   
+      progressBar.style.width=current + "%";
+      progressText.innerHTML=Math.ceil (current) + "%"; //math.ceil()-> 올림
+   
+      if(current>99.9){
+         clearInterval(progressTimer);
+         container.classList.add('progress-complete');
+         progressBar.style.width="100%";
+         progressBar.style.opacity=0;
+         battery.classList.add('color')
+         
+         gsap.to(container,{
+            duration:0.3,
+            yPercent:-100,
+            delay:2,
+         })
+      }
+   }
+};
+pageLoading()
 
 section1.addEventListener("click",()=>{
    spline.style.display="none"
@@ -36,7 +77,6 @@ function eheckKey(e) {
          scrollTo:'.section1',
          delay:1,
       })
-      loading.style.display="none"
 	}
 	if (e.key === 's') {
 		console.log('S키가 눌렸습니다.');
@@ -51,16 +91,31 @@ function eheckKey(e) {
          scrollTo:'.section3',
          delay:1,
       })
+      let mario_main=gsap.timeline()
+      mario_main.from('.mario_logo',{
+         xPercent:-150,
+         duration:0.5,
+         ease: "back.out(1.4)",
+         delay:4.5
+      })
+      mario_main.from('.develope_date',{
+         xPercent:200,
+         duration:0.5,
+         ease: "back.out(1.4)",
+      })
+ 
 	}
 	if (e.key === 'f') {
 		console.log('f키가 눌렸습니다.');
       scrollAble()
+      
 	}
-   gsap.to('.spline',{
-      display:"none",
-      delay:4,
-   })
-   //scrollDisable()
+   if(e.key === 'a'||e.key === 's'||e.key === 'd'){
+      gsap.to('.spline',{
+         display:"none",
+         delay:4,
+      })
+   }
 }
 
 //화면전환 애니
@@ -363,7 +418,6 @@ let metal_tl=gsap.timeline({
    scrollTrigger:{
       trigger:'.section1 .scene2',
       start:'+=5500',
-      markers:true,
    }
  })
  /*   metal_tl.to(window,{
@@ -371,7 +425,6 @@ let metal_tl=gsap.timeline({
     scrollTo: {y:'.section2', offsetY: window.innerHeight},
    },'sd') */
    metal_tl.to(window,{
-      duration:1,
       scrollDisable
    },'sd')
 
@@ -615,7 +668,6 @@ window.addEventListener('scroll',()=>{
    scrollTrigger:{
       trigger:'.section2 .scene2',
       start:'+=8700',
-      markers:true,
       /* toggleActions:'restart none none none' */
    }
  })
@@ -681,6 +733,7 @@ window.addEventListener('scroll',()=>{
    })
    screenChange('.section2 .scene3',2000,false)
    
+ 
  })
 
 //둠 리스트창
@@ -758,7 +811,6 @@ gsap.fromTo('.mario_sites',{
       trigger:'.port_desc',
       start:'+=2500',
       end:'+=700', 
-      markers:true,
       scrub:1, 
     }
 })
@@ -771,7 +823,6 @@ gsap.to(port_desc,{
      trigger:'.port_desc',
      start:'+=3200',
      end:'+=3000', 
-     markers:true,
      scrub:1,
    }
 })
@@ -781,7 +832,6 @@ gsap.from('.works_title',{
       trigger:'.port_desc',
       start:'+=3200',
       end:'+=100', 
-      markers:true,
       scrub:1,
    }
 })
@@ -793,7 +843,6 @@ gsap.fromTo('.mario_sites',{
       trigger:'.port_desc',
       start:'+=6200',
       end:'+=700', 
-      markers:true,
       scrub:1, 
     }
 })
@@ -805,7 +854,6 @@ gsap.from('.skill_title.design',{
      trigger:'.port_desc',
      start:'+=9000',
      end:'+=1000', 
-     markers:true,
      toggleActions:"restart reverse restart reverse ",
    }
 })
@@ -815,7 +863,6 @@ let tl7=gsap.timeline({
       trigger:'.port_desc',
       start:'+=8900',
       end:'+=500', 
-      markers:true,
       scrub:1,
     }
 })
@@ -839,7 +886,6 @@ gsap.from('.skill_title.web',{
      trigger:'.port_desc',
      start:'+=10600',
      end:'+=1000', 
-     markers:true,
      toggleActions:"restart reverse restart reverse ",
    }
 })
@@ -849,7 +895,6 @@ let tl8=gsap.timeline({
       trigger:'.port_desc',
       start:'+=10400',
       end:'+=500', 
-      markers:true,
       scrub:1,
       toggleActions:''
     }
@@ -876,7 +921,6 @@ gsap.from(mario_chat,{
      trigger:'.port_desc',
      start:'+=12000',
      end:'+=1000', 
-     markers:true,
      toggleActions:"restart reset restart reset ",
    }
 })
@@ -1095,3 +1139,4 @@ function render() {
 render()
 }
 fire()
+

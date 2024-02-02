@@ -10,19 +10,31 @@
 </head>
 <body>
    <main id="main">
+            
+      <!-- 로딩화면 -->
+      <div class="progress" id="progress">
+         <div class="battery">
+            <span class="progress-bar"></span>
+         </div>
+         <span class="progress-text">0%</span>
+      </div>
+
+      <!-- 게임보이 -->
       <div class="spline">
-         <p class="spline_txt">PRESS -A- KEY</p>
+         <p class="spline_txt">키보드 - A - 키를 눌러주세요</p>
          <script type="module" src="https://unpkg.com/@splinetool/viewer@1.0.42/build/spline-viewer.js"></script>
          <spline-viewer url="https://prod.spline.design/JU6Tir8tO0Lj0C1q/scene.splinecode"></spline-viewer>
       </div>
+      
 
+      <!-- 화면전환용 페이지 -->
       <ul class="screen_change">
          <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
          <li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li><li></li>
       </ul>
+
       <!-- section1 Metal_Slug -->
       <section class="section1">
-         <div class="loading_page"></div>
          <div class="scene1 game_screen">
             <div class="contents">
                <div class="metal_logo"></div>
@@ -714,9 +726,10 @@
          </div>
       </section>
 
-
    </main>
+
    
+   <script src="https://unpkg.com/imagesloaded@5/imagesloaded.pkgd.min.js"></script> <!-- imgloaded -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script> <!-- gsap -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollToPlugin.min.js"></script><!-- scrollTo -->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script> <!-- ScrollTrigger -->

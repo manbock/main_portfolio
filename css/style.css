@@ -15,15 +15,48 @@
 
 .hidden { overflow:hidden !important; touch-action:none;}
 
-.loading_page{position: absolute;top: 0; left: 0; width: 100%; height: 100%;
-   background-color: #000; z-index: 999;
+
+/* 로딩화면 */
+.progress{position: fixed;
+   background-color: #000;
+   color: #fff; height: 100%; width: 100%;
+   left: 0; top: 0;
+   transition:0.5s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+   display: flex; flex-direction: column; justify-content: center;
+   align-items: center; gap: 4rem;
+   z-index: 9999;
 }
-.spline{width: 100vw; height: 100vh; position: fixed; top: 0; left: 0;
-   display: block;  z-index: 1000;  display: none;
+.progress .battery{
+   width: 300px; height: 135px;
+   top: 40%; left: 50%;
+   padding: 30px;
+   padding-right: 45px;
+   background: url(../img/battery_white.png);
 }
+.progress .battery.color{
+   background: url(../img/battery_color.png);
+   animation-name: battery;
+   animation-duration: 1s;
+}
+@keyframes battery {
+   0%{background: url(../img/battery_color2.png);}
+   100%{background: url(../img/battery_color.png);}
+}
+.progress .battery .progress-bar{
+   display: block;
+   width: 0%; height: 100%;
+   background: url(../img/battery_inner.png);
+}
+.progress .progress-text{
+   text-align: center;
+   font-size: 3rem;
+}
+.progress-complete .progress-bar{
+   border-top-color: rgb(255,255,255);
+}
+
 .spline_txt{animation: mission_ani 3s infinite;}
 
-spline-viewer{width: 100%; height: 100%;}
 
 .game_screen{width: 100vw; height: 100vh; max-width: 1536px;
    margin: 0 auto;
@@ -33,6 +66,9 @@ spline-viewer{width: 100%; height: 100%;}
 body{ overflow-X: hidden;font-family: "Neo둥근모", "neodgm";}
 
 /* --------------------------🎃GAME BOY----------------------- */
+.spline{width: 100vw; height: 100vh; position: fixed; top: 0; left: 0;
+   display: block;  z-index: 1000;  /* display: none; */
+}
 
 .spline p{
    font-size: 4rem; color: #fff; position: absolute;
@@ -60,9 +96,8 @@ ul.screen_change{ height: 100vh;
 
 /* ---------------------------🎃section1--------------------------- */
 
-.section1{ background-color: #000; font-family: Galmuri7, sans-serif; }
 
-.scene1{ background-color: #000;}
+.section1 { background-color: #000;}
 
 .scene1 .contents{position: absolute;  width: 100%; height: 100vh; 
    display: flex; flex-direction: column; justify-content: center; align-items: center; gap:8rem;
@@ -216,6 +251,7 @@ ul.screen_change{ height: 100vh;
    background: 50% 50% /60% no-repeat url(../img/eri_default.gif);} 
 .introduce img{width: 25%; height: 55%; margin-top: 5%; margin-left: 5%;}
 
+
 /* 대화창 */
 .introduce .metal_txt_box{width: 0; height: 0;background-color: tomato;
    overflow: hidden; position: relative;
@@ -257,8 +293,9 @@ button.end_btn{
    font-family: Galmuri7, sans-serif; font-size: 2rem;
 }
 
-/* 대화창 END */
 
+
+/* 대화창 END */
 
 .my_character{
    position: absolute;
@@ -350,9 +387,6 @@ margin:0 -5px ;}
    text-shadow: -5px 0px black, 0px 5px black, 5px 0px black, 0px -5px black;
 }
 .scene1 .doom_bg{width: 100%; height: 100%; transform: scale(1.2);}
-
-
-
 
 
 
@@ -968,3 +1002,4 @@ input,select,textarea{outline: none; border: none;}
 
 
 #canvas{width: 50%; height: 80%; top: 0; left: 50%; position: absolute;  }
+
