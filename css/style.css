@@ -137,7 +137,7 @@ ul.screen_change{ height: 100vh;
    background:0% 0% / 100% 100%  url(../img/p1font.gif);
 }
 .p1 p.active{height: 60%;}
-.player{background-color: #000; border-radius: 2rem;}
+.player{background-color: #000; border-radius: 2rem; cursor: pointer;}
 .player_box{
    width: 100%; height: 100%; position: relative;
    overflow: hidden;
