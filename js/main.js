@@ -420,7 +420,6 @@ let metal_tl=gsap.timeline({
    scrollTrigger:{
       trigger:'.section1 .scene2',
       start:'+=5500',
-      markers:true
    }
  })
    metal_tl.to(window,{
