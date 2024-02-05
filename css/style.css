@@ -91,6 +91,15 @@ ul.screen_change{ height: 100vh;
    transform: scale(0);
    transform-origin: center;
 }
+/* --------------------------🎃nav button----------------------- */
+nav{position: fixed; top: 5%; right: 3%; width: 4rem; height: 5rem;
+   z-index: 200; 
+   display: flex; flex-direction: column; align-items: center;
+   gap: 1rem; cursor: pointer;
+}
+nav img.nav_button{width: 100%; height: 80%; transition: 0.2s;}
+nav img.nav_button:hover{transform: scale(1.3);}
+nav p{color: #fff; font-size: 1.5rem;}
 
 
 
@@ -288,7 +297,7 @@ button.next_btn{
 }
 button.end_btn{
    position: absolute  ;
-   right: 5%; bottom: 0%; width: 25%; height: 20%;
+   right: 4%; bottom: 0%; width: 25%; height: 20%;
    background-color: peru; z-index: 10; display: none;
    font-family: Galmuri7, sans-serif; font-size: 2rem;
 }

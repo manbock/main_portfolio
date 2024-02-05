@@ -7,6 +7,7 @@ let loading=document.querySelector('.loading_page')
 let section1=document.querySelector('.section1')
 let spline_txt=document.querySelector('.spline_txt')
 
+//로딩화면
 function pageLoading(){
    let container=document.querySelector('#progress');
    let battery=document.querySelector('.battery')
@@ -50,9 +51,6 @@ function pageLoading(){
 };
 pageLoading()
 
-section1.addEventListener("click",()=>{
-   spline.style.display="none"
-})
 
 
 let html=document.querySelector('html')
@@ -170,6 +168,11 @@ function gameChange(txt){
    spline_txt.innerText=`키보드 - ${txt} - 키를 누르세요.`
    scrollDisable()
 }
+let nav_button=document.querySelector('nav')
+nav_button.addEventListener('click',()=>{
+   gameChange()
+   spline_txt.innerHTML=`키보드 - A, S, D - 키를 눌러 게임을 선택하세요.`
+})
 
 // -------------------------------🎃section1-----------------------------
 
@@ -246,7 +249,7 @@ playerBoxs.forEach((e, i)=>{
    })
 })
 
-// --------------------------------sec1 scene3-----------------------
+// ---------------------------sec1 scene3-----------------------
 
 let scene3_bg =document.querySelector('.scene3_bg')
 let metal_character=document.querySelector('.my_character')
@@ -285,7 +288,6 @@ let tl3=gsap.timeline({
     }
 })
 tl3.to(scene3_bg,{
-  /*  x: - (scene3_bg.offsetWidth - window.innerWidth), */
   xPercent:-75,
   ease:"none"
 })
@@ -418,12 +420,13 @@ let metal_tl=gsap.timeline({
    scrollTrigger:{
       trigger:'.section1 .scene2',
       start:'+=5500',
+      markers:true
    }
  })
- /*   metal_tl.to(window,{
+   metal_tl.to(window,{
     duration:1,
     scrollTo: {y:'.section2', offsetY: window.innerHeight},
-   },'sd') */
+   },'sd')
    metal_tl.to(window,{
       scrollDisable
    },'sd')
