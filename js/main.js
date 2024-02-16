@@ -8,6 +8,7 @@ let section1=document.querySelector('.section1')
 let spline_txt=document.querySelector('.spline_txt')
 
 //로딩화면
+alert("1920x1280해상도 맞춤입니다.");
 function pageLoading(){
    let container=document.querySelector('#progress');
    let battery=document.querySelector('.battery')
